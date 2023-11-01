@@ -12,3 +12,7 @@ brew install navi antidote
 antidote bundle <~/.zsh_plugins.txt >~/.zsh_plugins.zsh
 antidote bundle <~/.zsh_plugins.post_compinit.txt >~/.zsh_plugins.post_compinit.zsh
 ```
+
+## Install fonts
+
+https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts
