@@ -1,0 +1,2 @@
+joshskidmore/zsh-fzf-history-search
+Aloxaf/fzf-tab
