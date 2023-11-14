@@ -62,6 +62,7 @@ alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias help='tldr'
 alias ping='prettyping --nolegend'
 alias tmlog="log stream --style syslog --predicate 'senderImagePath contains[cd] \"TimeMachine\"' --info"
+alias antidote-update="antidote bundle <~/.zsh_plugins.txt >~/.zsh_plugins.zsh"
 
 export GOPATH=$HOME
 . $(brew --prefix asdf)/libexec/asdf.sh
