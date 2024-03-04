@@ -45,9 +45,29 @@ HIST_IGNORE_ALL_DUPS="true"
 
 # User configuration
 
-# Load Antigen
+# Load Antidote
+
+# Set the name of the static .zsh plugins file antidote will generate.
+zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins.zsh
+zsh_plugins_post=${ZDOTDIR:-~}/.zsh_plugins.post_compinit.zsh
+
+# Ensure you have a .zsh_plugins.txt file where you can add plugins.
+[[ -f ${zsh_plugins:r}.txt ]] || touch ${zsh_plugins:r}.txt
+
+# Ensure you have a .zsh_plugins.txt file where you can add plugins.
+[[ -f ${zsh_plugins_post:r}.txt ]] || touch ${zsh_plugins_post:r}.txt
+
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-source ~/.zsh_plugins.zsh
+
+# Generate static file in a subshell when .zsh_plugins.txt is updated.
+if [[ ! $zsh_plugins -nt ${zsh_plugins:r}.txt ]]; then
+  (antidote bundle <${zsh_plugins:r}.txt >|$zsh_plugins)
+fi
+source $zsh_plugins
+if [[ ! $zsh_plugins_post -nt ${zsh_plugins_post:r}.txt ]]; then
+  (antidote bundle <${zsh_plugins_post:r}.txt >|$zsh_plugins_post)
+fi
+source $zsh_plugins_post
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -62,7 +82,6 @@ alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias help='tldr'
 alias ping='prettyping --nolegend'
 alias tmlog="log stream --style syslog --predicate 'senderImagePath contains[cd] \"TimeMachine\"' --info"
-alias antidote-update="antidote bundle <~/.zsh_plugins.txt >~/.zsh_plugins.zsh"
 
 export GOPATH=$HOME
 . $(brew --prefix asdf)/libexec/asdf.sh
