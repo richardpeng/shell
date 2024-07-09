@@ -5,14 +5,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#zmodload zsh/zprof
-
 export TERM="xterm-256color"
 
 # ohmyzsh configuration
 
 # Speeds up load time
 DISABLE_UPDATE_PROMPT=true
+
+# Add homebrew completions to fpath
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 
 # On slow systems, checking the cached .zcompdump file to see if it must be 
 # regenerated adds a noticable delay to zsh startup.  This little hack restricts 
@@ -93,12 +94,9 @@ export GOPATH=$HOME
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(navi widget zsh)"
 
 source ~/.zsh_plugins.post_compinit.zsh
-#zprof
