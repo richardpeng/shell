@@ -69,6 +69,11 @@ if [[ ! $zsh_plugins_post -nt ${zsh_plugins_post:r}.txt ]]; then
 fi
 source $zsh_plugins_post
 
+source ~/Library/Caches/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-nojhan-SLASH-liquidprompt/themes/powerline/powerline.theme
+
+# Add homebrew completions to fpath
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
