@@ -43,6 +43,8 @@ autoload -Uz compinit
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 HIST_IGNORE_ALL_DUPS="true"
+HISTSIZE=10000000
+SAVEHIST=10000000
 
 # User configuration
 
