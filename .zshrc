@@ -88,6 +88,7 @@ alias timestamp="date +%s"
 alias cat="bat"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias help='tldr'
+alias ls='lsd'
 alias ping='prettyping --nolegend'
 alias tmlog="log stream --style syslog --predicate 'senderImagePath contains[cd] \"TimeMachine\"' --info"
 
